@@ -1,4 +1,5 @@
 import React, {  useEffect, useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { blogcontext } from './App';
 
 
@@ -8,9 +9,9 @@ function Register() {
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
   const {form, setFormdetails} = useContext(blogcontext);
-
+  const navigate = useNavigate()
   useEffect(()=> {
-    sessionStorage.setItem("userdetails",JSON.stringify(form))
+    localStorage.setItem("userdetails",JSON.stringify(form))
   },[form])
 
   function submithandler(e) {
@@ -22,7 +23,8 @@ function Register() {
       username:username,
       password:password
     }
-    setFormdetails({...form, userdetails})
+    setFormdetails([...form, {...userdetails}])
+    navigate("/Login")
   }
 
 

@@ -11,7 +11,7 @@ export const blogcontext = createContext(null)
 
 function App() {
     const [blog , setBlog] = useState ([])
-    const [form , setFormdetails] = useState ({})
+    const [form , setFormdetails] = useState ([])
     const [singleblog , setsingleblog] = useState ([])
   return (
     <div>

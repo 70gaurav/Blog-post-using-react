@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-  
+  const navigate = useNavigate()
   const [user,setuser] = useState("")
   const [password,setpassword] = useState("")
   function submithandler(e) {
     e.preventDefault()
     const storeddata = JSON.parse(localStorage.getItem("userdetails"))
-    if(storeddata.userdetails.username === user && storeddata.userdetails.password === password){
-      alert(`welcome ${storeddata.userdetails.username}`)
+    console.log(storeddata)
+    const filtereddata = storeddata.filter(data => data.username === user && data.password === password)
+    if(filtereddata){
+     alert( )
+     navigate("/")
     }
     else{
-      alert("invalid credentials you should register first or check the credentials you have entered")
-    }
+      alert("you have entered wrong credentials check your username or password or you should register first")
+    } 
+  
   }
   return (
     <div className='register'>
